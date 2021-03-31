@@ -9,4 +9,6 @@ sklearn
 scipy
 numpy
 transforms3d
-pycuda
+# pycuda
+
+scikit-learn==0.22.1
