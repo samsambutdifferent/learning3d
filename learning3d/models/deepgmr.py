@@ -154,11 +154,11 @@ class DeepGMR(nn.Module):
 		transformed_source = transform.transform_point_cloud(source, est_T[:, :3, :3], est_T[:, :3, 3])
 
 		result = {'est_R': est_T[:, :3, :3],
-				  'est_t': est_T[:, :3, 3],
+				  'est_t': est_T[:, :3, 3],	
 				  'est_R_inverse': est_T_inverse[:, :3, :3],
 				  'est_t_inverese': est_T_inverse[:, :3, 3],
 				  'est_T': est_T,
-				  'est_T_inverse': est_T_inverse
+				  'est_T_inverse': est_T_inverse,
 				  'r': template_features - source_features,
 				  'transformed_source': transformed_source}
 
