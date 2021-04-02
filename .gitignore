@@ -1,5 +1,4 @@
 checkpoints/
-data/
 data_utils/__pycache__
 models/__pycache__
 ops/__pycache__

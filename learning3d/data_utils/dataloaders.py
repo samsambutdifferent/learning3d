@@ -24,6 +24,7 @@ def download_modelnet40():
 	if not os.path.exists(DATA_DIR):
 		os.mkdir(DATA_DIR)
 	if not os.path.exists(os.path.join(DATA_DIR, 'modelnet40_ply_hdf5_2048')):
+		#www = "https://www.dropbox.com/s/ea4arug1itihb8f/modelnet40_hdf5_2048.zip"
 		www = 'https://shapenet.cs.stanford.edu/media/modelnet40_ply_hdf5_2048.zip'
 		zipfile = os.path.basename(www)
 		os.system('wget %s; unzip %s' % (www, zipfile))
@@ -45,6 +46,11 @@ def load_data(train, use_normals):
 		f.close()
 		all_data.append(data)
 		all_label.append(label)
+
+
+	print("!!!!!")
+	print(all_data)
+
 	all_data = np.concatenate(all_data, axis=0)
 	all_label = np.concatenate(all_label, axis=0)
 	return all_data, all_label
@@ -63,7 +69,7 @@ def create_random_transform(dtype, max_rotation_deg, max_translation):
 	return vec
 
 def jitter_pointcloud(pointcloud, sigma=0.04, clip=0.05):
-	# N, C = pointcloud.shape
+	# N, C = pointcloud.shapeshapenet
 	sigma = 0.04*np.random.random_sample()
 	pointcloud += torch.empty(pointcloud.shape).normal_(mean=0, std=sigma).clamp(-clip, clip)
 	return pointcloud
