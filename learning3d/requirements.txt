@@ -12,4 +12,4 @@ transforms3d
 pycuda
 
 scikit-learn==0.22.1
-
+cuda
