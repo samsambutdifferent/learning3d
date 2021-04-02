@@ -218,6 +218,7 @@ class RegistrationData(Dataset):
 		self.partial_source = partial_source
 		self.noise = noise
 		self.additional_params = additional_params
+		self.use_rri = False
 
 		if self.algorithm == 'PCRNet' or self.algorithm == 'iPCRNet':
 			from .. ops.transform_functions import PCRNetTransform
@@ -267,7 +268,7 @@ class RegistrationData(Dataset):
 
 		igt = self.transforms.igt
 		
-		if self.additional_params['use_masknet']:
+		if self.additional_params.get('use_masknet', '') != '':
 			if self.partial_source and self.partial_template:
 				return template, source, igt, self.template_mask, self.source_mask
 			elif self.partial_source:
